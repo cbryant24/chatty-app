@@ -22,7 +22,7 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
 });
 
 const jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromHeader('authorizations'),
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
     secretOrKey: keys.secret
 }
 

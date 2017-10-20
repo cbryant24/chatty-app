@@ -2,7 +2,7 @@ const jwt = require('jwt-simple');
 const User = require('../models/users');
 const keys = require('../config/keys');
 
-function tokenForUse(user){
+function tokenForUser(user){
     const timestamp = new Date().getTime();
     
     return jwt.encode({ uid: user.id, iat: timestamp}, keys.secret)
@@ -54,11 +54,21 @@ exports.signup = (req, res, next) => {
         newUser.save(err => {
             if(err) return next(err);
 
-            res.json({ token: tokenForUse(newUser) });
+            const sendObj = {
+                token: tokenForUser(newUser),
+                username, color
+            }
+
+            res.json(sendObj);
         })
     });
 }
 
 exports.signin = (req, res, next) => {
-    res.send({ token: tokenForUser(req.user) })
+    res.send(
+        { 
+            token: tokenForUser(req.user),
+            username: req.user.username,
+            color: req.user.color
+        })
 }

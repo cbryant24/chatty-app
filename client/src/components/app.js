@@ -8,6 +8,8 @@ import Nav from './nav';
 import Signin from './signin';
 import { connect } from 'react-redux';
 import { jwtSignin } from '../actions';
+import Chat_Lobby from './chat_lobby';
+import Chat_Room from './chat_room';
 
 
 class App extends Component {
@@ -25,6 +27,8 @@ class App extends Component {
             <Route exact path='/' component={Home}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/signin' component={Signin}/>
+            <Route path='/chat-lobby' component={Chat_Lobby}/>
+            <Route path='/chat/:id' component={Chat_Room}/>
         </div>
         )
     }

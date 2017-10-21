@@ -50,3 +50,17 @@ export function signout() {
         type: types.SIGNOUT
     }
 }
+
+export function get_room_list() {
+    return dispatch => {
+        axios.get(
+            '/api/room-list',
+            { headers: { authorization: localStorage.token }}
+        ).then( res => {
+            dispatch({
+                type: types.GET_ROOM_LIST,
+                payload: res.data
+            })
+        })
+    }
+}

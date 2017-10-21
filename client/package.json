@@ -6,6 +6,9 @@
   "proxy": {
     "/auth/*": {
       "target": "http://localhost:5000"
+    },
+    "/api/*": {
+      "target": "http://localhost:5000"
     }
   },
   "scripts": {
@@ -31,7 +34,8 @@
     "redux": "^3.7.2",
     "redux-form": "^7.1.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "socket.io-client": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
